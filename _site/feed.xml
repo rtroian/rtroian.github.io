@@ -1,19 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-18T12:09:17-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">troian.net.br</title><subtitle>A data packet on the web.</subtitle><author><name>Rodrigo Troian</name></author><entry><title type="html">Rebooting…</title><link href="http://localhost:4000/rebooting/" rel="alternate" type="text/html" title="Rebooting..." /><published>2019-01-01T00:00:00-02:00</published><updated>2019-01-01T00:00:00-02:00</updated><id>http://localhost:4000/rebooting</id><content type="html" xml:base="http://localhost:4000/rebooting/">&lt;h1 id=&quot;rebooting&quot;&gt;Rebooting&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-18T16:23:18-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">troian.net.br</title><subtitle>A data packet on the web.</subtitle><author><name>Rodrigo Troian</name></author><entry><title type="html">Rebooting…</title><link href="http://localhost:4000/rebooting/" rel="alternate" type="text/html" title="Rebooting..." /><published>2019-01-01T00:00:00-02:00</published><updated>2019-01-01T00:00:00-02:00</updated><id>http://localhost:4000/rebooting</id><content type="html" xml:base="http://localhost:4000/rebooting/">&lt;h1 id=&quot;rebooting&quot;&gt;Rebooting&lt;/h1&gt;
 
-&lt;p&gt;first test with jekkyl and GitHub&lt;/p&gt;
+&lt;p&gt;Depois de um longo tempo usando Wordpress para manter meus sites, decidi migrar para algo mais simples e ao mesmo tempo mais direto, e como não preciso de conteúdo dinamico por aqui, decidi usar o stack GitPages + Jekyll.&lt;/p&gt;
 
-&lt;h2 id=&quot;h2&quot;&gt;h2&lt;/h2&gt;
+&lt;p&gt;Esse primeiro post é mais um teste de reboot, não tem muito objetivo de ser util e sim prático!&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;bullet&lt;/li&gt;
-  &lt;li&gt;another&lt;/li&gt;
-  &lt;li&gt;on3&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Acredito que como sempre, vou escrever e colocar por aqui coisas que gosto e faço no dia a dia, como material sobre FLOSS, OpenWRT, Mesh, InfoSec e afins!&lt;/p&gt;
 
-&lt;h3 id=&quot;h3&quot;&gt;h3&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;timestamp&lt;/li&gt;
-  &lt;li&gt;timestama&lt;/li&gt;
-  &lt;li&gt;timezone&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><summary type="html">Network Administration, Embedded Hardware, Firmwares</summary></entry></feed>
+&lt;p&gt;Salve a todos que por aqui aparecerem!
+[]’s
+rT&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><summary type="html">FLOSS, OpenWRT, Mesh, InfoSec</summary></entry></feed>

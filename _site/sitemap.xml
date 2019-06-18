@@ -13,4 +13,7 @@
 <url>
 <loc>http://localhost:4000/mesh/</loc>
 </url>
+<url>
+<loc>http://localhost:4000/portfolio/</loc>
+</url>
 </urlset>
