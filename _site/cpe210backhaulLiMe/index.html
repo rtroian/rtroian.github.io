@@ -1,0 +1,757 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>TP-Link CPE 210 como Backhaul usando LiMe - troian.net.br</title>
+<meta name="description" content="A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a unica porta de rede ativa como Lan, assim como possivelmente em outras versões de roteadores com uma unica porta LAN.Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos  resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="troian.net.br">
+<meta property="og:title" content="TP-Link CPE 210 como Backhaul usando LiMe">
+<meta property="og:url" content="http://localhost:4000/cpe210backhaulLiMe/">
+
+
+  <meta property="og:description" content="A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a unica porta de rede ativa como Lan, assim como possivelmente em outras versões de roteadores com uma unica porta LAN.Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos  resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-04-01T00:00:00-03:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/cpe210backhaulLiMe/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rodrigo Troian",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="troian.net.br Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">troian.net.br</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >about</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/" >portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-photo.jpg" alt="Rodrigo Troian" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Rodrigo Troian</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        A network and systems administrator...
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Around the world</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="TP-Link CPE 210 como Backhaul usando LiMe">
+    <meta itemprop="description" content="A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a unica porta de rede ativa como Lan, assim como possivelmente em outras versões de roteadores com uma unica porta LAN.Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos  resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.">
+    <meta itemprop="datePublished" content="April 01, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">TP-Link CPE 210 como Backhaul usando LiMe
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a <strong>unica porta de rede</strong> ativa como <strong>Lan</strong>, assim como possivelmente em outras versões de roteadores com uma unica porta LAN.
+Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos  resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.</p>
+
+<hr />
+
+<h4 id="cenário">Cenário:</h4>
+
+<p>inicialmente o cenário que estamos trabalhando é o seguinte:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>internet -&gt; router caseiro 192.168.0.1 -&gt; cabo rede  roteador lime 4300 porta wan - wifi lan 4300 -&gt; via mesh -&gt; cpe 210
+</code></pre></div></div>
+
+<p>partindo desse cenario, supomos que a CPE esta <strong>acessivel via ssh</strong> e tem <strong>acesso a internet</strong></p>
+
+<hr />
+<h4 id="ajustes-iniciais">Ajustes iniciais</h4>
+<p>Como a compilação que estamos usando ainda não incluiu o pacote de admin, após acessar o roteador CPE 210 por ssh partindo de sua maquina conectada a ele por meio da mesh, iremos atualizar a fonte de pacotes e instalar o gerenciador grafico para auxiliar no processo de visualização:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@thisnode.info -v
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>opkg update
+
+opkg <span class="nb">install </span>luci-mod-admin-full
+</code></pre></div></div>
+
+<p>apos o pacote instalado ja sera possivel observar quais interfaces estao disponiveis e quais não atraves do navegador web, acessando:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>http://thisnode.info
+</code></pre></div></div>
+
+<p>e indo na pagina de administração e interefaces:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Luci - administration - interfaces
+</code></pre></div></div>
+
+<p>no nosso caso nao existia nenhuma interface relacionando a <strong>wan</strong> e a <strong>eth0</strong> como interface solo tambem, como observado no 4300 que esta servindo de borda nesse momento.</p>
+
+<p>para isso podemos criar as varias interfaces na mão ou acessar o roteador e criar as interfaces que estao faltando atraves do vi:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@thisnode.info
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi /etc/config/network
+</code></pre></div></div>
+
+<p>basicamente serão adicionadas as interfaces:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 	wan, wan6, lm_net_eth0, lm_net_eth0_batadv_dev, lm_net_eth0_batadv_if
+</code></pre></div></div>
+
+<p>e para referencia, segue meu arquivo de interfaces que está funcionando:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+
+config interface 'lan'
+	option type 'bridge'
+	option proto 'static'
+	option ip6assign '60'
+	option ipaddr '10.13.155.136'
+	option netmask '255.255.0.0'
+	option mtu '1500'
+	option ifname 'bat0'
+
+config device 'lm_net_br_lan_anygw_dev'
+	option type 'macvlan'
+	option name 'anygw'
+	option ifname 'br-lan'
+	option macaddr 'aa:aa:aa:0d:fe:aa'
+
+config interface 'lm_net_br_lan_anygw_if'
+	option ifname 'anygw'
+	option auto '1'
+	option netmask '255.255.0.0'
+	option proto 'static'
+	option ipaddr '10.13.0.1'
+	option ip6addr '2a00:1508:a0d:fe00::1/64'
+
+config rule6 'lm_net_anygw_rule6'
+	option src '2a00:1508:a0d:fe00::1/128'
+	option lookup '170'
+
+config route6 'lm_net_anygw_route6'
+	option interface 'lm_net_br_lan_anygw_if'
+	option target '2a00:1508:a0d:fe00::/64'
+	option table '170'
+
+config rule 'lm_net_anygw_rule4'
+	option src '10.13.0.1/32'
+	option lookup '170'
+
+config route 'lm_net_anygw_route4'
+	option interface 'lm_net_br_lan_anygw_if'
+	option target '10.13.0.0'
+	option netmask '255.255.0.0'
+	option table '170'
+
+config interface 'lm_net_batadv_dummy_if'
+	option ifname 'dummy0'
+	option macaddr 'aa:4e:26:df:9b:88'
+	option proto 'batadv'
+	option mesh 'bat0'
+
+config interface 'lm_net_wlan0_mesh'
+	option proto 'none'
+	option mtu '1536'
+	option auto '1'
+
+config device 'lm_net_wlan0_mesh_batadv_dev'
+	option type '8021ad'
+	option name 'wlan0-mesh_29'
+	option ifname '@lm_net_wlan0_mesh'
+	option vid '29'
+	option mtu '1532'
+
+config interface 'lm_net_wlan0_mesh_batadv_if'
+	option auto '1'
+	option ifname 'wlan0-mesh_29'
+	option proto 'batadv'
+	option mesh 'bat0'
+
+config device 'lm_net_wlan0_mesh_bmx6_dev'
+	option type '8021ad'
+	option name 'wlan0-mesh_13'
+	option ifname '@lm_net_wlan0_mesh'
+	option vid '13'
+	option mtu '1500'
+
+config device 'lm_net_eth0_batadv_dev'
+	option type '8021ad'
+	option name 'eth0_29'
+	option ifname 'eth0'
+	option vid '29'
+	option mtu '1532'
+
+
+config interface 'lm_net_wlan0_mesh_bmx6_if'
+	option auto '1'
+	option ifname 'wlan0-mesh_13'
+	option proto 'static'
+	option ipaddr '169.254.155.136'
+	option netmask '255.255.255.255'
+
+config interface 'lm_net_eth0'
+	option mtu '1500'
+	option proto 'none'
+	option ifname 'eth0'
+	option auto '1'
+
+config interface 'lm_net_eth0_batadv_if'
+	option auto '1'
+	option proto 'batadv'
+	option ifname 'eth0_29'
+	option mesh 'bat0'
+
+config interface 'lm_net_eth0'
+	option proto 'none'
+	option auto '1'
+	option ifname 'eth0'
+	option mtu '1500'
+
+config interface 'wan'
+	option proto 'dhcp'
+	option ifname 'eth0'
+
+config interface 'wan6'
+	option proto 'none'
+	option ifname 'eth0'
+
+</code></pre></div></div>
+
+<p>e adicionar as zonas certas ao firewall, que no router se encontra em /etc/config/firewall e  adicionar ao fim da zona <strong>lan</strong> a interface lm-net-eth0-batadv-if:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>config zone
+	option name 'lan'
+	option input 'ACCEPT'
+	option output 'ACCEPT'
+	option forward 'ACCEPT'
+	option network 'lan lm_net_br_lan_anygw_if lm_net_batadv_dummy_if lm_net_wlan0_mesh_batadv_if lm_net_wlan0_mesh_bmx6_if lm_net_eth0_batadv_if'
+
+</code></pre></div></div>
+
+<hr />
+<h3 id="testes">Testes:</h3>
+
+<p>Feitos em varios passos:</p>
+
+<h4 id="partindo-do-router-cpe">partindo do router cpe:</h4>
+
+<p>desconectar o cabo de internet que estava no outro roteador da malha em wan e conectar ao cpe em wan , <strong>reiniciar</strong>  o  CPE e <strong>desligar</strong>  o outro router.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@thisnode.info
+</code></pre></div></div>
+
+<ul>
+  <li>ping partindo do router para o roteador caseiro 192.168.1.1</li>
+  <li>ping partindo do router para fora, ex 8.8.8.8</li>
+  <li>ping via dns, ex ping riseup.net</li>
+  <li>
+    <p>opkg update</p>
+  </li>
+  <li>ligar outro router</li>
+  <li>ip n para ver vizinhos</li>
+  <li>esperar router aparecer (ou monitorar por bmx)</li>
+  <li>pingar outro router da malha</li>
+</ul>
+
+<h4 id="partindo-de-computador-cliente-conectado-na-cpe">partindo de computador cliente conectado na cpe</h4>
+
+<ul>
+  <li>ping 10.13.0.1</li>
+  <li>ping 8.8.8.8</li>
+  <li>ping eff.org</li>
+  <li>http</li>
+</ul>
+
+<p>se tudo estiver ok até agora significa que o roteador esta com a porta wan ok, agora precisamos conferir os outros nodos da rede:</p>
+
+<h4 id="partindo-de-outro-roteador-na-malha-conectado-ao-cpe">partindo de outro roteador na malha conectado ao cpe</h4>
+
+<ul>
+  <li>ligar o outro nodo da rede que antes tinha a wan</li>
+  <li>trocar de rede</li>
+  <li>conectar pc ao outro roteador</li>
+  <li>acessar thisnode.info</li>
+  <li>ping 10.13.0.1</li>
+  <li>ping ip cpe</li>
+  <li>ping 8.8.4.4</li>
+  <li>ping qualquernome.com</li>
+  <li>http</li>
+</ul>
+
+<p>se tudo isso funcionar, siginifica que <strong>deu certo</strong>!</p>
+
+<p>happy backhauling!</p>
+
+<p>ps: <em>nos meus testes, com as placas certas mas o firewall não, ele funcionava partindo da cpe mas nao dos outros nodos, ao ajustar o firewall e reiniciar a malha, tudo voltou a vida!</em></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#generic" class="page__taxonomy-item" rel="tag">generic</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#lime" class="page__taxonomy-item" rel="tag">LiMe</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#mesh" class="page__taxonomy-item" rel="tag">mesh</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openwrt" class="page__taxonomy-item" rel="tag">openwrt</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-04-01T00:00:00-03:00">April 01, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=TP-Link+CPE+210+como+Backhaul+usando+LiMe%20http%3A%2F%2Flocalhost%3A4000%2Fcpe210backhaulLiMe%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcpe210backhaulLiMe%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcpe210backhaulLiMe%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/cpe210FailSafeTFTP/" class="pagination--pager" title="TP-Link CPE 210 FailSafe e TFTP
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/cpe210FailSafeTFTP/" rel="permalink">TP-Link CPE 210 FailSafe e TFTP
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/cpe210v3compileLiMe/" rel="permalink">Compilar TP-Link CPE 210 v2&amp;3
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos  escolh...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/rebooting/" rel="permalink">Rebooting…
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">FLOSS, OpenWRT, Mesh, InfoSec
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Rodrigo Troian. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,4 +1,502 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-18T17:16:12-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">troian.net.br</title><subtitle>A data packet on the web.</subtitle><author><name>Rodrigo Troian</name></author><entry><title type="html">Rebooting…</title><link href="http://localhost:4000/rebooting/" rel="alternate" type="text/html" title="Rebooting..." /><published>2019-01-01T00:00:00-02:00</published><updated>2019-01-01T00:00:00-02:00</updated><id>http://localhost:4000/rebooting</id><content type="html" xml:base="http://localhost:4000/rebooting/">&lt;h1 id=&quot;rebooting&quot;&gt;Rebooting&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-19T18:30:49-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">troian.net.br</title><subtitle>A data packet on the web.</subtitle><author><name>Rodrigo Troian</name></author><entry><title type="html">TP-Link CPE 210 como Backhaul usando LiMe</title><link href="http://localhost:4000/cpe210backhaulLiMe/" rel="alternate" type="text/html" title="TP-Link CPE 210 como Backhaul usando LiMe" /><published>2019-04-01T00:00:00-03:00</published><updated>2019-04-01T00:00:00-03:00</updated><id>http://localhost:4000/cpe210backhaulLiMe</id><content type="html" xml:base="http://localhost:4000/cpe210backhaulLiMe/">&lt;p&gt;A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a &lt;strong&gt;unica porta de rede&lt;/strong&gt; ativa como &lt;strong&gt;Lan&lt;/strong&gt;, assim como possivelmente em outras versões de roteadores com uma unica porta LAN.
+Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos  resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;cenário&quot;&gt;Cenário:&lt;/h4&gt;
+
+&lt;p&gt;inicialmente o cenário que estamos trabalhando é o seguinte:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;internet -&amp;gt; router caseiro 192.168.0.1 -&amp;gt; cabo rede  roteador lime 4300 porta wan - wifi lan 4300 -&amp;gt; via mesh -&amp;gt; cpe 210
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;partindo desse cenario, supomos que a CPE esta &lt;strong&gt;acessivel via ssh&lt;/strong&gt; e tem &lt;strong&gt;acesso a internet&lt;/strong&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h4 id=&quot;ajustes-iniciais&quot;&gt;Ajustes iniciais&lt;/h4&gt;
+&lt;p&gt;Como a compilação que estamos usando ainda não incluiu o pacote de admin, após acessar o roteador CPE 210 por ssh partindo de sua maquina conectada a ele por meio da mesh, iremos atualizar a fonte de pacotes e instalar o gerenciador grafico para auxiliar no processo de visualização:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh root@thisnode.info -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;opkg update
+
+opkg &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;luci-mod-admin-full
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;apos o pacote instalado ja sera possivel observar quais interfaces estao disponiveis e quais não atraves do navegador web, acessando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://thisnode.info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e indo na pagina de administração e interefaces:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Luci - administration - interfaces
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;no nosso caso nao existia nenhuma interface relacionando a &lt;strong&gt;wan&lt;/strong&gt; e a &lt;strong&gt;eth0&lt;/strong&gt; como interface solo tambem, como observado no 4300 que esta servindo de borda nesse momento.&lt;/p&gt;
+
+&lt;p&gt;para isso podemos criar as varias interfaces na mão ou acessar o roteador e criar as interfaces que estao faltando atraves do vi:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh root@thisnode.info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;vi /etc/config/network
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;basicamente serão adicionadas as interfaces:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; 	wan, wan6, lm_net_eth0, lm_net_eth0_batadv_dev, lm_net_eth0_batadv_if
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e para referencia, segue meu arquivo de interfaces que está funcionando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+
+config interface 'lan'
+	option type 'bridge'
+	option proto 'static'
+	option ip6assign '60'
+	option ipaddr '10.13.155.136'
+	option netmask '255.255.0.0'
+	option mtu '1500'
+	option ifname 'bat0'
+
+config device 'lm_net_br_lan_anygw_dev'
+	option type 'macvlan'
+	option name 'anygw'
+	option ifname 'br-lan'
+	option macaddr 'aa:aa:aa:0d:fe:aa'
+
+config interface 'lm_net_br_lan_anygw_if'
+	option ifname 'anygw'
+	option auto '1'
+	option netmask '255.255.0.0'
+	option proto 'static'
+	option ipaddr '10.13.0.1'
+	option ip6addr '2a00:1508:a0d:fe00::1/64'
+
+config rule6 'lm_net_anygw_rule6'
+	option src '2a00:1508:a0d:fe00::1/128'
+	option lookup '170'
+
+config route6 'lm_net_anygw_route6'
+	option interface 'lm_net_br_lan_anygw_if'
+	option target '2a00:1508:a0d:fe00::/64'
+	option table '170'
+
+config rule 'lm_net_anygw_rule4'
+	option src '10.13.0.1/32'
+	option lookup '170'
+
+config route 'lm_net_anygw_route4'
+	option interface 'lm_net_br_lan_anygw_if'
+	option target '10.13.0.0'
+	option netmask '255.255.0.0'
+	option table '170'
+
+config interface 'lm_net_batadv_dummy_if'
+	option ifname 'dummy0'
+	option macaddr 'aa:4e:26:df:9b:88'
+	option proto 'batadv'
+	option mesh 'bat0'
+
+config interface 'lm_net_wlan0_mesh'
+	option proto 'none'
+	option mtu '1536'
+	option auto '1'
+
+config device 'lm_net_wlan0_mesh_batadv_dev'
+	option type '8021ad'
+	option name 'wlan0-mesh_29'
+	option ifname '@lm_net_wlan0_mesh'
+	option vid '29'
+	option mtu '1532'
+
+config interface 'lm_net_wlan0_mesh_batadv_if'
+	option auto '1'
+	option ifname 'wlan0-mesh_29'
+	option proto 'batadv'
+	option mesh 'bat0'
+
+config device 'lm_net_wlan0_mesh_bmx6_dev'
+	option type '8021ad'
+	option name 'wlan0-mesh_13'
+	option ifname '@lm_net_wlan0_mesh'
+	option vid '13'
+	option mtu '1500'
+
+config device 'lm_net_eth0_batadv_dev'
+	option type '8021ad'
+	option name 'eth0_29'
+	option ifname 'eth0'
+	option vid '29'
+	option mtu '1532'
+
+
+config interface 'lm_net_wlan0_mesh_bmx6_if'
+	option auto '1'
+	option ifname 'wlan0-mesh_13'
+	option proto 'static'
+	option ipaddr '169.254.155.136'
+	option netmask '255.255.255.255'
+
+config interface 'lm_net_eth0'
+	option mtu '1500'
+	option proto 'none'
+	option ifname 'eth0'
+	option auto '1'
+
+config interface 'lm_net_eth0_batadv_if'
+	option auto '1'
+	option proto 'batadv'
+	option ifname 'eth0_29'
+	option mesh 'bat0'
+
+config interface 'lm_net_eth0'
+	option proto 'none'
+	option auto '1'
+	option ifname 'eth0'
+	option mtu '1500'
+
+config interface 'wan'
+	option proto 'dhcp'
+	option ifname 'eth0'
+
+config interface 'wan6'
+	option proto 'none'
+	option ifname 'eth0'
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e adicionar as zonas certas ao firewall, que no router se encontra em /etc/config/firewall e  adicionar ao fim da zona &lt;strong&gt;lan&lt;/strong&gt; a interface lm-net-eth0-batadv-if:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;config zone
+	option name 'lan'
+	option input 'ACCEPT'
+	option output 'ACCEPT'
+	option forward 'ACCEPT'
+	option network 'lan lm_net_br_lan_anygw_if lm_net_batadv_dummy_if lm_net_wlan0_mesh_batadv_if lm_net_wlan0_mesh_bmx6_if lm_net_eth0_batadv_if'
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;testes&quot;&gt;Testes:&lt;/h3&gt;
+
+&lt;p&gt;Feitos em varios passos:&lt;/p&gt;
+
+&lt;h4 id=&quot;partindo-do-router-cpe&quot;&gt;partindo do router cpe:&lt;/h4&gt;
+
+&lt;p&gt;desconectar o cabo de internet que estava no outro roteador da malha em wan e conectar ao cpe em wan , &lt;strong&gt;reiniciar&lt;/strong&gt;  o  CPE e &lt;strong&gt;desligar&lt;/strong&gt;  o outro router.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh root@thisnode.info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ping partindo do router para o roteador caseiro 192.168.1.1&lt;/li&gt;
+  &lt;li&gt;ping partindo do router para fora, ex 8.8.8.8&lt;/li&gt;
+  &lt;li&gt;ping via dns, ex ping riseup.net&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;opkg update&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ligar outro router&lt;/li&gt;
+  &lt;li&gt;ip n para ver vizinhos&lt;/li&gt;
+  &lt;li&gt;esperar router aparecer (ou monitorar por bmx)&lt;/li&gt;
+  &lt;li&gt;pingar outro router da malha&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;partindo-de-computador-cliente-conectado-na-cpe&quot;&gt;partindo de computador cliente conectado na cpe&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ping 10.13.0.1&lt;/li&gt;
+  &lt;li&gt;ping 8.8.8.8&lt;/li&gt;
+  &lt;li&gt;ping eff.org&lt;/li&gt;
+  &lt;li&gt;http&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;se tudo estiver ok até agora significa que o roteador esta com a porta wan ok, agora precisamos conferir os outros nodos da rede:&lt;/p&gt;
+
+&lt;h4 id=&quot;partindo-de-outro-roteador-na-malha-conectado-ao-cpe&quot;&gt;partindo de outro roteador na malha conectado ao cpe&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ligar o outro nodo da rede que antes tinha a wan&lt;/li&gt;
+  &lt;li&gt;trocar de rede&lt;/li&gt;
+  &lt;li&gt;conectar pc ao outro roteador&lt;/li&gt;
+  &lt;li&gt;acessar thisnode.info&lt;/li&gt;
+  &lt;li&gt;ping 10.13.0.1&lt;/li&gt;
+  &lt;li&gt;ping ip cpe&lt;/li&gt;
+  &lt;li&gt;ping 8.8.4.4&lt;/li&gt;
+  &lt;li&gt;ping qualquernome.com&lt;/li&gt;
+  &lt;li&gt;http&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;se tudo isso funcionar, siginifica que &lt;strong&gt;deu certo&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;p&gt;happy backhauling!&lt;/p&gt;
+
+&lt;p&gt;ps: &lt;em&gt;nos meus testes, com as placas certas mas o firewall não, ele funcionava partindo da cpe mas nao dos outros nodos, ao ajustar o firewall e reiniciar a malha, tudo voltou a vida!&lt;/em&gt;&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a unica porta de rede ativa como Lan, assim como possivelmente em outras versões de roteadores com uma unica porta LAN. Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.</summary></entry><entry><title type="html">TP-Link CPE 210 FailSafe e TFTP</title><link href="http://localhost:4000/cpe210FailSafeTFTP/" rel="alternate" type="text/html" title="TP-Link CPE 210 FailSafe e TFTP" /><published>2019-03-01T00:00:00-03:00</published><updated>2019-03-01T00:00:00-03:00</updated><id>http://localhost:4000/cpe210FailSafeTFTP</id><content type="html" xml:base="http://localhost:4000/cpe210FailSafeTFTP/">&lt;p&gt;Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos seguir os seguintes  passos:&lt;/p&gt;
+
+&lt;p&gt;1- Para entrar em failsafe, desligar o roteador pelo cabo de rede, contar 5 segundos, colocar um pino em reset, ligar contando até 10,  o led da lan deve ligar sem ter nada conectado nela…&lt;/p&gt;
+
+&lt;p&gt;2 - Assim que ela ligar colocar cabo da lan no roteador e na maquina, colocar a maquina local em ip 192.168.0.100/24 pois o roteador está por padrão de fábrica em 192.168.0.254. Isso pode ser feito de distintas maneiras, via terminal é aconselhado desligar o gerenciador de rede e após isso fixar o ip.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ systemctl stop NetworkManager
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e conferir com&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ systemctl status NetworkManager ```
+● NetworkManager.service - Network Manager
+   	Loaded: loaded (/usr/lib/systemd/system/NetworkManager.service; enabled; vendor preset: disabled)
+ 	 Drop-In: /usr/lib/systemd/system/NetworkManager.service.d
+       └─NetworkManager-ovs.conf
+  	 Active: inactive (dead) since Wed 2019-01-23 18:06:42 -02; 8s ago ``` após isso adicionar ip na interface:
+
+$ ip a add 192.168.0.100/24 dev enp5s0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;3- Conferir com tcpdump apontando para a interface local&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ tcpdump -nli enp5s0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1280 ARP, Request who-has 192.168.0.254 tell 192.168.0.100, length 28
+18:16:31.181334 ARP, Reply 192.168.0.254 is-at ba:be:fa:ce:08:41, length 46
+18:16:32.462956 IP 192.168.0.254.3422 &amp;gt; 192.168.0.100.69:  31 RRQ &quot;recovery.bin&quot; octet timeout 2
+18:16:32.463009 IP 192.168.0.100 &amp;gt; 192.168.0.254: ICMP 192.168.0.100 udp port 69 unreachable, length 67
+18:16:35.663035 IP 192.168.0.254.3422 &amp;gt; 192.168.0.100.69:  31 RRQ &quot;recovery.bin&quot; octet timeout 2
+18:16:35.663100 IP 192.168.0.100 &amp;gt; 192.168.0.254: ICMP 192.168.0.100 udp port 69 unreachable, length 67
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4 -  O failsafe esta pronto para pedir um arquivo por tftp para a maquina .100, por isso colocamos o ip no passo anterior,  agora precisamos subir um servidor local e depois colocar o arquivo solicitado em uma pasta que esse servidor utilize . Para isso criamos a pasta /tftpboot com permissão geral e dono nobody:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir /tftpboot
+$ chmod 777 /tftpboot
+$ chown nobody /tftpboot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Nesse tcpdump acima também  vemos que o roteador esta pedindo um arquivo chamado recovery.bin, que será usado nos próximos passos, mas antes vamos iniciar o serviço de tftp em nossa maquina:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # atftpd --daemon --bind-address 192.168.0.100 /tftpboot/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e conferir os  logs do journalctl:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;journactl -f
+...
+jan 23 18:17:38 Darth atftpd[5947]: Advanced Trivial FTP server started (0.7.1)
+jan 23 18:17:38 Darth atftpd[5948]: atftpd: can't bind port 192.168.0.100:69/udp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;como user normal não  deu certo, tentar como root:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ atftpd --daemon --bind-address 192.168.0.100 /tftpboot/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e os logs:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jan 23 18:19:27 Darth atftpd[5979]: Advanced Trivial FTP server started (0.7.1)
+jan 23 18:19:27 Darth sudo[5978]: pam_unix(sudo:session): session closed for user root
+jan 23 18:19:27 Darth atftpd[5980]: atftpd: can't change identity to nobody.nogroup, exiting.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;conferindo no sistema, vi que /etc/group não existia o grupo  “nogroup”,  então para isso foi criado com o comando:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ groupadd nogroup
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e acompanhando o terminal de  logs por&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# journalctl -F
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;vemos que o servidor iniciou sem problemas agora!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;: Advanced Trivial FTP server started (0.7.1)
+jan 23 18:26:03 Darth sudo[6244]: pam_unix(sudo:session): session closed for user root
+jan 23 18:26:03 Darth atftpd[6248]: Serving recovery.bin to 192.168.0.254:3487
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;6 - Agora que o servidor local ja reconhece a pasta e o roteador como cliente, precisamos identificar o que o roteador está solicitando através do terminal do tcpdump:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;18:28:46.456018 IP 192.168.0.254.1842 &amp;gt; 192.168.0.100.69:  31 RRQ &quot;recovery.bin&quot; octet timeout 2
+18:28:46.456311 IP 192.168.0.100.52866 &amp;gt; 192.168.0.254.1842: UDP, length 19
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;o tcpdump esta mostrando que a requisição (RRQ) do arquivo esta dando timeout, o que siginifica que não está achando o arquivo chamado recovery.bin para servir.&lt;/p&gt;
+
+&lt;p&gt;7 - Finalmente, precisamos copiar para a pasta  /tftpboot o firmware a ser utilizado, prestando atenção que seja a  &lt;strong&gt;versao factory&lt;/strong&gt;, e neste processo renomear para recovery.bin:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mv /home/rt/firmwareoriginal.bin /tftpboot/recovery.bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e acompanhar pelo terminal do tcpdump o inicio ao fim da troca de dados.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;18:42:34.859906 ARP, Request who-has 192.168.0.100 tell 192.168.0.254, length 46
+18:42:34.859945 ARP, Reply 192.168.0.100 is-at 28:d2:44:2c:31:53, length 28
+18:42:34.859998 IP 192.168.0.254.1878 &amp;gt; 192.168.0.100.69:  31 RRQ &quot;recovery.bin&quot; octet timeout 2
+18:42:34.860449 IP 192.168.0.100.33171 &amp;gt; 192.168.0.254.1878: UDP, length 12
+18:42:34.860516 IP 192.168.0.254.1878 &amp;gt; 192.168.0.100.33171: UDP, length 4
+18:42:34.860675 IP 192.168.0.100.33171 &amp;gt; 192.168.0.254.1878: UDP, length 516
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E agora é só  ver o fluir dos pacotes na rede… quando os pacotes param de apresentar timeout e iniciam a troca entre maquina e router significa que a imagem esta se movimentando para o router e assim que ela acabar  o roteador vai reiniciar.&lt;/p&gt;
+
+&lt;p&gt;Agora para sabermos se a imagem está se comportando como deveria precisamos  reativar o network manager e receber ip via cabo lan!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ systemctl start NetworkManager
+$ dhclient enp5s0 -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se tudo isso deu certo, temos uma versão funcional de cpe/roteador novamente!&lt;/p&gt;
+
+&lt;p&gt;happy debricking!
+rT&lt;/p&gt;
+
+&lt;p&gt;v0 em 24/01&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos seguir os seguintes passos:</summary></entry><entry><title type="html">Compilar TP-Link CPE 210 v2&amp;amp;3</title><link href="http://localhost:4000/cpe210v3compileLiMe/" rel="alternate" type="text/html" title="Compilar TP-Link CPE 210 v2&amp;3" /><published>2019-02-01T00:00:00-02:00</published><updated>2019-02-01T00:00:00-02:00</updated><id>http://localhost:4000/cpe210v3compileLiMe</id><content type="html" xml:base="http://localhost:4000/cpe210v3compileLiMe/">&lt;p&gt;Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos  escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.&lt;/p&gt;
+
+&lt;p&gt;Este passo a passo esta baseado no que o  @HiureAnderson fez, mas escrito em markdown e com adição de imagens e alguns pacotes, orginal em :&lt;/p&gt;
+
+&lt;p&gt;https://github.com/hiureanderson/cadernos-zim/blob/master/compilando%20Cpe210-v3/Home.txt&lt;/p&gt;
+
+&lt;p&gt;Após descer o ambiente de build e testarmos o mesmo por padrão, ou seja compilar uma imagem “normal” do openwrt para a cpev3, precisamos adicionar os feeds do LiMe, escolhendo os pacotes e meta pacotes certos, removendo os conflitantes e adicionando a parte de ambiente gráfico.&lt;/p&gt;
+
+&lt;h2 id=&quot;usar-ambiente-pronto&quot;&gt;Usar ambiente pronto&lt;/h2&gt;
+
+&lt;p&gt;Para facilitar nossa vida, vamos descer o fork de @robimarko do git que ja esta com os patches aplicados,  prestando atenção ao branch especifico apontado no clone:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# git clone -b CPE210-v3-PR --single-branch https://github.com/robimarko/openwrt.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;renomear o repositorio pra lembrar que eh especifico com o v3&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mv openwrt/ openwrtCPEV3/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;teste-ambiente-antes-do-lime-prorpiamente-dito&quot;&gt;teste ambiente, antes do Lime prorpiamente dito&lt;/h3&gt;
+
+&lt;p&gt;Entrar no diretório pra iniciar a compilação e testar compilador padrão sem o Lime:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # make menuconfig
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Target: AR7xxx/AR9xxx
+
+Subtarget: Generic
+
+Target Profile: TP-LINK CPE210 V3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;após configurados esses passos, vamos gerar a primeira imagem, nesse caso usando o comando time para saber quanto demorou o processo e a opção -j9 para usar todos os cores de minha maquina, 8 neste caso, valendo a regra que para uso total dos processadores a opção j deve ser todos procs+1:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# make download
+
+# time make -j9 V=s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;a saída da compilação deve apresentar um log apontando onde esta a imagem e o tempo:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;real	39m9,072s
+user	222m16,105s
+sys	18m41,099s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;agora para conferir a imagem…&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# cd bin/targets/ar71xx/generic/
+
+# ls -alFh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-rw-r--r-- 1 rtroian rtroian 3,3M jan 12 16:15 openwrt-ar71xx-generic-cpe210-v3-squashfs-factory.bin
+-rw-r--r-- 1 rtroian rtroian 7,5M jan 12 16:15 openwrt-ar71xx-generic-cpe210-v3-squashfs-sysupgrade.bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;os tamanhos e as funções parecem ok, agora vamos movimentar a imagem para outra pasta pois a nova compilação vai sobrescrever os arquivos gerados:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# mv  bin/targets/ar71xx/generic/* /home/rT/firmwares/openwrt/cpe210v3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;gravar-openwrt-puro&quot;&gt;Gravar OpenWRt puro&lt;/h3&gt;
+
+&lt;p&gt;agora podemos gravar a imagem no roteador, substituindo a original da tplink! Em alguns casos pode ser necessário trocar o nome do arquivo factory para tplink.bin para que seja aceito.&lt;/p&gt;
+
+&lt;h3 id=&quot;limpar-ambiente&quot;&gt;Limpar ambiente&lt;/h3&gt;
+&lt;p&gt;se tudo deu certo, agora poderiamos limpar o ambiente de compilação, mas em nosso caso podemos testar não limpar por ser a mesma target, mas para registro o processo  seria:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# make clean
+
+# make dist-clean
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;iniciar-com-o-lime&quot;&gt;Iniciar com o Lime&lt;/h3&gt;
+
+&lt;p&gt;Agora vamos adicionar feeds do LiMe:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; cp feeds.conf.default feeds.conf.default.local
+
+ cp feeds.conf.default feeds.conf
+
+  echo &quot;src-git libremesh https://github.com/libremesh/lime-packages.git&quot; &amp;gt;&amp;gt; feeds.conf
+ echo &quot;src-git libremap https://github.com/libremap/libremap-agent-openwrt.git&quot; &amp;gt;&amp;gt; feeds.conf
+ echo &quot;src-git limeui https://github.com/libremesh/lime-packages-ui.git&quot; &amp;gt;&amp;gt; feeds.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;atualizar lista de pacotes dos feeds&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# scripts/feeds update -a
+
+# scripts/feeds install -a
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;compilar-o-lime&quot;&gt;Compilar o Lime&lt;/h3&gt;
+&lt;p&gt;Finalmente vamos compilar com o Lime, mas para isso precisamos ativar o software que  apontamos nos feeds e desativar alguns outros:&lt;/p&gt;
+
+&lt;p&gt;entramos na configuração  ncurses por terminal:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; # make menuconfig
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;e nas opções de pacotes, temos as seguintes necessidades do Lime:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Base system : desativa  dnsmasq e selecionar dnsmasq-dhcpv6
+Network: desativar odhcpd
+ 	Lime-collections: ativar lime-full
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E ao compilar temos uma versão funcionando na malha, mas espere, ainda não acabamos, por algum motivo essas seleções de pacotes dão problemas no ambiente grafico, então temos que ir conferir a Luci e a seção admin&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Luci: luci-base e luci-mod-failsafe, modules - admin full
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E agora sim, ao sair e salvar temos  uma provavel imagem 100% funcional!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;time make -j9 V=s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Se tudo deu certo, ao listar a pasta (lembrando de ter removido o anterior, ou conferindo a hora da criação da imagem) ao final devera ter isso:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# ls bin/targets/ar71xx/generic/ -lah
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;total 30M
+drwxr-xr-x 3 rtroian rtroian 4,0K jan 13 09:22 .
+drwxr-xr-x 3 rtroian rtroian 4,0K jan 13 09:18 ..
+-rw-r--r-- 1 rtroian rtroian 4,4K jan 24 13:01 config.seed
+-rw-r--r-- 1 rtroian rtroian 5,1M jan 24 13:04 openwrt-ar71xx-generic-cpe210-v3-squashfs-factory.bin
+-rw-r--r-- 1 rtroian rtroian 7,5M jan 24 13:04 openwrt-ar71xx-generic-cpe210-v3-squashfs-sysupgrade.bin
+-rw-r--r-- 1 rtroian rtroian 5,8K jan 24 13:04 openwrt-ar71xx-generic-device-cpe210-v3.manifest
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Depois o resto do processo é o mesmo de gravação padrão!&lt;/p&gt;
+
+&lt;p&gt;Eras isso pessoal,
+Happy Meshing
+rT&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.</summary></entry><entry><title type="html">Rebooting…</title><link href="http://localhost:4000/rebooting/" rel="alternate" type="text/html" title="Rebooting..." /><published>2019-01-01T00:00:00-02:00</published><updated>2019-01-01T00:00:00-02:00</updated><id>http://localhost:4000/rebooting</id><content type="html" xml:base="http://localhost:4000/rebooting/">&lt;h1 id=&quot;rebooting&quot;&gt;Rebooting&lt;/h1&gt;
 
 &lt;p&gt;Depois de um longo tempo usando Wordpress para manter meus sites, decidi migrar para algo mais simples e ao mesmo tempo mais direto, e como não preciso de conteúdo dinamico por aqui, decidi usar o stack GitPages + Jekyll.&lt;/p&gt;
 

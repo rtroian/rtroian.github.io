@@ -6,11 +6,11 @@ header:
 ---
 ## QuemSou / WhoAmI
 
-Apenas um administrador de redes e sistemas com uma atenção especial aos problemas da vida real...
+Apenas um sysadmin com uma atenção especial aos problemas da vida real...
 
 ou / or
 
-Just a system and networks administrator with special attention to the real life problems...
+Just a sysadmin with special attention to the real life problems...
 
 ### Bio - Mini-Bio - Micro-Bio
 

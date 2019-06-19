@@ -1,0 +1,656 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Compilar TP-Link CPE 210 v2&amp;3 - troian.net.br</title>
+<meta name="description" content="Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos  escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="troian.net.br">
+<meta property="og:title" content="Compilar TP-Link CPE 210 v2&amp;3">
+<meta property="og:url" content="http://localhost:4000/cpe210v3compileLiMe/">
+
+
+  <meta property="og:description" content="Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos  escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-02-01T00:00:00-02:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/cpe210v3compileLiMe/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rodrigo Troian",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="troian.net.br Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">troian.net.br</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >about</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/" >portfolio</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-photo.jpg" alt="Rodrigo Troian" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Rodrigo Troian</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        A network and systems administrator...
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Around the world</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Compilar TP-Link CPE 210 v2&amp;3">
+    <meta itemprop="description" content="Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos  escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.">
+    <meta itemprop="datePublished" content="February 01, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Compilar TP-Link CPE 210 v2&amp;3
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos  escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.</p>
+
+<p>Este passo a passo esta baseado no que o  @HiureAnderson fez, mas escrito em markdown e com adição de imagens e alguns pacotes, orginal em :</p>
+
+<p>https://github.com/hiureanderson/cadernos-zim/blob/master/compilando%20Cpe210-v3/Home.txt</p>
+
+<p>Após descer o ambiente de build e testarmos o mesmo por padrão, ou seja compilar uma imagem “normal” do openwrt para a cpev3, precisamos adicionar os feeds do LiMe, escolhendo os pacotes e meta pacotes certos, removendo os conflitantes e adicionando a parte de ambiente gráfico.</p>
+
+<h2 id="usar-ambiente-pronto">Usar ambiente pronto</h2>
+
+<p>Para facilitar nossa vida, vamos descer o fork de @robimarko do git que ja esta com os patches aplicados,  prestando atenção ao branch especifico apontado no clone:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># git clone -b CPE210-v3-PR --single-branch https://github.com/robimarko/openwrt.git
+</code></pre></div></div>
+
+<p>renomear o repositorio pra lembrar que eh especifico com o v3</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mv openwrt/ openwrtCPEV3/
+</code></pre></div></div>
+
+<h3 id="teste-ambiente-antes-do-lime-prorpiamente-dito">teste ambiente, antes do Lime prorpiamente dito</h3>
+
+<p>Entrar no diretório pra iniciar a compilação e testar compilador padrão sem o Lime:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # make menuconfig
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Target: AR7xxx/AR9xxx
+
+Subtarget: Generic
+
+Target Profile: TP-LINK CPE210 V3
+</code></pre></div></div>
+
+<p>após configurados esses passos, vamos gerar a primeira imagem, nesse caso usando o comando time para saber quanto demorou o processo e a opção -j9 para usar todos os cores de minha maquina, 8 neste caso, valendo a regra que para uso total dos processadores a opção j deve ser todos procs+1:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># make download
+
+# time make -j9 V=s
+</code></pre></div></div>
+
+<p>a saída da compilação deve apresentar um log apontando onde esta a imagem e o tempo:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>real	39m9,072s
+user	222m16,105s
+sys	18m41,099s
+</code></pre></div></div>
+
+<p>agora para conferir a imagem…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># cd bin/targets/ar71xx/generic/
+
+# ls -alFh
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-rw-r--r-- 1 rtroian rtroian 3,3M jan 12 16:15 openwrt-ar71xx-generic-cpe210-v3-squashfs-factory.bin
+-rw-r--r-- 1 rtroian rtroian 7,5M jan 12 16:15 openwrt-ar71xx-generic-cpe210-v3-squashfs-sysupgrade.bin
+</code></pre></div></div>
+
+<p>os tamanhos e as funções parecem ok, agora vamos movimentar a imagem para outra pasta pois a nova compilação vai sobrescrever os arquivos gerados:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># mv  bin/targets/ar71xx/generic/* /home/rT/firmwares/openwrt/cpe210v3
+</code></pre></div></div>
+
+<h3 id="gravar-openwrt-puro">Gravar OpenWRt puro</h3>
+
+<p>agora podemos gravar a imagem no roteador, substituindo a original da tplink! Em alguns casos pode ser necessário trocar o nome do arquivo factory para tplink.bin para que seja aceito.</p>
+
+<h3 id="limpar-ambiente">Limpar ambiente</h3>
+<p>se tudo deu certo, agora poderiamos limpar o ambiente de compilação, mas em nosso caso podemos testar não limpar por ser a mesma target, mas para registro o processo  seria:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># make clean
+
+# make dist-clean
+</code></pre></div></div>
+
+<h3 id="iniciar-com-o-lime">Iniciar com o Lime</h3>
+
+<p>Agora vamos adicionar feeds do LiMe:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> cp feeds.conf.default feeds.conf.default.local
+
+ cp feeds.conf.default feeds.conf
+
+  echo "src-git libremesh https://github.com/libremesh/lime-packages.git" &gt;&gt; feeds.conf
+ echo "src-git libremap https://github.com/libremap/libremap-agent-openwrt.git" &gt;&gt; feeds.conf
+ echo "src-git limeui https://github.com/libremesh/lime-packages-ui.git" &gt;&gt; feeds.conf
+</code></pre></div></div>
+
+<p>atualizar lista de pacotes dos feeds</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># scripts/feeds update -a
+
+# scripts/feeds install -a
+</code></pre></div></div>
+
+<h3 id="compilar-o-lime">Compilar o Lime</h3>
+<p>Finalmente vamos compilar com o Lime, mas para isso precisamos ativar o software que  apontamos nos feeds e desativar alguns outros:</p>
+
+<p>entramos na configuração  ncurses por terminal:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # make menuconfig
+</code></pre></div></div>
+
+<p>e nas opções de pacotes, temos as seguintes necessidades do Lime:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Base system : desativa  dnsmasq e selecionar dnsmasq-dhcpv6
+Network: desativar odhcpd
+ 	Lime-collections: ativar lime-full
+</code></pre></div></div>
+
+<p>E ao compilar temos uma versão funcionando na malha, mas espere, ainda não acabamos, por algum motivo essas seleções de pacotes dão problemas no ambiente grafico, então temos que ir conferir a Luci e a seção admin</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Luci: luci-base e luci-mod-failsafe, modules - admin full
+</code></pre></div></div>
+
+<p>E agora sim, ao sair e salvar temos  uma provavel imagem 100% funcional!</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>time make -j9 V=s
+</code></pre></div></div>
+
+<p>Se tudo deu certo, ao listar a pasta (lembrando de ter removido o anterior, ou conferindo a hora da criação da imagem) ao final devera ter isso:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ls bin/targets/ar71xx/generic/ -lah
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>total 30M
+drwxr-xr-x 3 rtroian rtroian 4,0K jan 13 09:22 .
+drwxr-xr-x 3 rtroian rtroian 4,0K jan 13 09:18 ..
+-rw-r--r-- 1 rtroian rtroian 4,4K jan 24 13:01 config.seed
+-rw-r--r-- 1 rtroian rtroian 5,1M jan 24 13:04 openwrt-ar71xx-generic-cpe210-v3-squashfs-factory.bin
+-rw-r--r-- 1 rtroian rtroian 7,5M jan 24 13:04 openwrt-ar71xx-generic-cpe210-v3-squashfs-sysupgrade.bin
+-rw-r--r-- 1 rtroian rtroian 5,8K jan 24 13:04 openwrt-ar71xx-generic-device-cpe210-v3.manifest
+</code></pre></div></div>
+
+<p>Depois o resto do processo é o mesmo de gravação padrão!</p>
+
+<p>Eras isso pessoal,
+Happy Meshing
+rT</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#generic" class="page__taxonomy-item" rel="tag">generic</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#lime" class="page__taxonomy-item" rel="tag">LiMe</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#mesh" class="page__taxonomy-item" rel="tag">mesh</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openwrt" class="page__taxonomy-item" rel="tag">openwrt</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-02-01T00:00:00-02:00">February 01, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Compilar+TP-Link+CPE+210+v2%263%20http%3A%2F%2Flocalhost%3A4000%2Fcpe210v3compileLiMe%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fcpe210v3compileLiMe%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fcpe210v3compileLiMe%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/rebooting/" class="pagination--pager" title="Rebooting…
+">Previous</a>
+    
+    
+      <a href="/cpe210FailSafeTFTP/" class="pagination--pager" title="TP-Link CPE 210 FailSafe e TFTP
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/cpe210backhaulLiMe/" rel="permalink">TP-Link CPE 210 como Backhaul usando LiMe
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a unica porta de rede ativa como Lan, assim como possivelmente em outras versões de...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/cpe210FailSafeTFTP/" rel="permalink">TP-Link CPE 210 FailSafe e TFTP
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/rebooting/" rel="permalink">Rebooting…
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">FLOSS, OpenWRT, Mesh, InfoSec
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Rodrigo Troian. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
