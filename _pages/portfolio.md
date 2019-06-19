@@ -1,8 +1,8 @@
 ---
 title: "portfolio"
 permalink: "/portfolio/"
-# header:
-  # image: "/images/logorl.png"
+header:
+  image: "https://cdn-images-1.medium.com/max/1600/1*SZ_WjD0s3Jg7woViSVon2g.gif"
 ---
 
 
