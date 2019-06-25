@@ -1,0 +1,699 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.16.4 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Archer C5 FailSafe e TFTP - troian.net.br</title>
+<meta name="description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="troian.net.br">
+<meta property="og:title" content="Archer C5 FailSafe e TFTP">
+<meta property="og:url" content="http://localhost:4000/archerc5FailSafeTFTP/">
+
+
+  <meta property="og:description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-05-01T00:00:00-03:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/archerc5FailSafeTFTP/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Rodrigo Troian",
+      "url": "http://localhost:4000",
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="troian.net.br Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">troian.net.br</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >about</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/" >portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/images/bio-photo.jpg" alt="Rodrigo Troian" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Rodrigo Troian</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        A network and systems administrator...
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Around the world</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Archer C5 FailSafe e TFTP">
+    <meta itemprop="description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
+    <meta itemprop="datePublished" content="May 01, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Archer C5 FailSafe e TFTP
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.
+Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:</p>
+
+<blockquote>
+  <p>Dual Band (concurrent) and Gigabit Ethernet. Advertised as 1750 Mbps. It has simultaneous Triple-Stream (3×3) radios on both 2.4GHz and 5 GHz Bands. It supports 802.11n in 2.4GHz for 450Mbps throughput and IEEE 802.11ac (draft) for 1300Mbps throughput in 5GHz.
+The Archer C5 v1.x: available worldwide, has 3 internal (2.4GHz) and 3 external (5GHz) antennas.
+The Archer C5 v2.0: available worldwide, has ?? internal (2.4GHz) and 2 external (5GHz) antennas.
+<cite><a href="https://openwrt.org/toh/tp-link/archer-c5-c7-wdr7500">OpenWRT Site</a></cite></p>
+</blockquote>
+
+<p>Vamos passar o processo de retorno ao firmware original, o que eu considero um Downgrade, mas tudo bem…</p>
+
+<p>O link para a  firmware pode ser acessado direto <a href="https://static.tp-link.com/res/down/soft/Archer_C5_V1.20_150428.zip">daqui</a>, e para a pagina dela que mostra que a ultima versao é de 2015 <a href="https://www.tp-link.com/en/support/download/archer-c5/v1.20/#Firmware">aqui</a>.</p>
+
+<p class="notice--warning"><strong>Atenção:</strong> Siga esses passos por usa conta e risco!</p>
+
+<p>Para entrar em Failsafe Mode no Archer C5 ou no Archer C7 pressionar o botão WPS/Reset rapidamente após iniciar o roteador, mas ao contrário do normal que se mantem pressionado, nesse caso apertar freneticamente alternadamente é o que funciona!</p>
+
+<p><strong>Parar</strong> quando o segundo LED (um asterisco) começar a <strong>piscar</strong> rapidamente.</p>
+
+<p>Depois em tese é só seguir o processo normal como visto <a href="https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset">aqui</a>,</p>
+
+<p>Mas é aqui que as coisas ficam mais chatas, precisamos conectar via cabo na porta lan, limpar todas as rotas e endereços, conferir se a placa esta ativa, adicionar o endereço e ai sim começar o upgrade, então vamos ao passo a passo:</p>
+
+<ol>
+  <li>desativar gerenciador de rede:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># systemctl stop NetworkManager
+</code></pre></div>    </div>
+  </li>
+  <li>desconectar todos cabos e wifis e limpar todas rotas de conexões:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  &gt; # ip r
+  &gt; # ip r del default .... (copiar da saida acima)
+</code></pre></div>    </div>
+  </li>
+  <li>conferir se nao temos um ip na mesma linha do que precismos:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; # ip a
+&gt; # ip a del ... dev SEUDEV
+</code></pre></div>    </div>
+  </li>
+  <li>conferir se o link nao entrou em estado desligado:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; # ip l
+&gt; # ip l set dev SEUDEV up
+</code></pre></div>    </div>
+  </li>
+  <li>adicionar o endereço certo para comunicar, meu caso usando o 192.168.1.100:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; # ip a add 192.168.1.100/24 dev SEUDEV
+</code></pre></div>    </div>
+  </li>
+  <li>e se tudo deu certo, o comando ping para 192.168.1.1 deve estar funcionando, em caso cotnrário, conferir todos os passos :)
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; ping 192.168.1.1
+PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
+64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.731 ms
+64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.762 ms
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Agora podemos ir ao recovery propriamente dito:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@192.168.1.1 -v
+OpenSSH_8.0p1, OpenSSL 1.1.1c  28 May 2019
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: Connecting to 192.168.1.1 [192.168.1.1] port 22.
+debug1: Connection established.
+</code></pre></div></div>
+<p>Responder sim ao fingerprint e seguir a conexão:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-----------------------------------------------------
+ OpenWrt SNAPSHOT, r9662-3411399
+ -----------------------------------------------------
+================= FAILSAFE MODE active ================
+special commands:
+* firstboot	     reset settings to factory defaults
+* mount_root	 mount root-partition with config files
+
+after mount_root:
+* passwd			 change root's password
+* /etc/config		    directory with config files
+
+for more help see:
+https://openwrt.org/docs/guide-user/troubleshooting/
+- failsafe_and_factory_reset
+- root_password_reset
+=======================================================
+root@(none):~#
+
+</code></pre></div></div>
+<p>Se deu certo até agora, entramos em uma tela assim (no caso de ja ter existido uma instalação anterior, claro…)</p>
+
+<p>Agora vamos reverter para a configuração de fabrica:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@(none):~# firstboot
+This will erase all settings and remove any installed packages. Are you sure? [N/y]
+y
+/dev/mtdblock4 is not mounted
+/dev/mtdblock4 will be erased on next mount
+root@(none):~# reboot &amp; exit
+</code></pre></div></div>
+
+<p>E voltamos a ter uma imagem funcional, no meu caso uma LiMe mas poderia ser qualquer outro sabor de openwrt \0/</p>
+
+<p>E agora temos uma versão funcionando do openwrt… vamos a parte de voltar a firmware orginal em outro texto!</p>
+
+<p>Happy FailSafing!</p>
+
+<p>pagina do archer c5 e c7 no <a href="https://openwrt.org/toh/tp-link/archer-c5-c7-wdr7500">site do OpenWrt</a></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#archer" class="page__taxonomy-item" rel="tag">Archer</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#failsafe" class="page__taxonomy-item" rel="tag">FailSafe</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openwrt" class="page__taxonomy-item" rel="tag">OpenWrt</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tp-link" class="page__taxonomy-item" rel="tag">TP-link</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2019-05-01T00:00:00-03:00">May 01, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Archer+C5+FailSafe+e+TFTP%20http%3A%2F%2Flocalhost%3A4000%2Farcherc5FailSafeTFTP%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Farcherc5FailSafeTFTP%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Farcherc5FailSafeTFTP%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/cpe210backhaulLiMe/" class="pagination--pager" title="TP-Link CPE 210 como Backhaul usando LiMe
+">Previous</a>
+    
+    
+      <a href="/archerc5FactoryFirmware/" class="pagination--pager" title="Archer C5 Factory Firmware
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src=
+          
+            " https://cdn-images-1.medium.com/max/1600/1*SZ_WjD0s3Jg7woViSVon2g.gif "
+          
+          alt="">
+      </div>
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/DojoRedes/" rel="permalink">Dojo Sysadmin Redes Comunitarias
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Dojo Redes Comunitárias
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src=
+          
+            " https://cdn-images-1.medium.com/max/1600/1*SZ_WjD0s3Jg7woViSVon2g.gif "
+          
+          alt="">
+      </div>
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/archerc5FactoryFirmware/" rel="permalink">Archer C5 Factory Firmware
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Agora a questão é: devolver a firmware original diretamente ou tentar fazer o caminho de instalação via openwrt?
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src=
+          
+            " https://cdn-images-1.medium.com/max/1600/1*SZ_WjD0s3Jg7woViSVon2g.gif "
+          
+          alt="">
+      </div>
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/cpe210backhaulLiMe/" rel="permalink">TP-Link CPE 210 como Backhaul usando LiMe
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a unica porta de rede ativa como Lan, assim como possivelmente em outras versões de...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src=
+          
+            " https://cdn-images-1.medium.com/max/1600/1*SZ_WjD0s3Jg7woViSVon2g.gif "
+          
+          alt="">
+      </div>
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/cpe210FailSafeTFTP/" rel="permalink">TP-Link CPE 210 FailSafe e TFTP
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><input type="search" id="search" aria-placeholder="Enter your search term..." class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+    <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2019 Rodrigo Troian. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>
