@@ -119,7 +119,4 @@ Agora para sabermos se a imagem está se comportando como deveria precisamos  re
 
 Se tudo isso deu certo, temos uma versão funcional de cpe/roteador novamente!
 
-happy debricking!
-rT
-
-v0 em 24/01
+Happy Easy Debricking!

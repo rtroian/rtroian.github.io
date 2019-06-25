@@ -243,7 +243,6 @@ se tudo estiver ok até agora significa que o roteador esta com a porta wan ok, 
 
 se tudo isso funcionar, siginifica que __deu certo__!
 
-
-happy backhauling!
+Happy Backhauling!
 
 ps: _nos meus testes, com as placas certas mas o firewall não, ele funcionava partindo da cpe mas nao dos outros nodos, ao ajustar o firewall e reiniciar a malha, tudo voltou a vida!_

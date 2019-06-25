@@ -137,5 +137,5 @@ drwxr-xr-x 3 rtroian rtroian 4,0K jan 13 09:18 ..
 Depois o resto do processo é o mesmo de gravação padrão!
 
 Eras isso pessoal,
+
 Happy Meshing
-rT

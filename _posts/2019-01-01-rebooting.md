@@ -16,5 +16,3 @@ Esse primeiro post é mais um teste de reboot, não tem muito objetivo de ser ut
 Acredito que como sempre, vou escrever e colocar por aqui coisas que gosto e faço no dia a dia, como material sobre FLOSS, OpenWRT, Mesh, InfoSec e afins!
 
 Salve a todos que por aqui aparecerem!
-[]'s
-rT

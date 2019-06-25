@@ -128,5 +128,4 @@ Inspirado nas práticas dos dojos de artes marciais japonesas, um Coding Dojo in
 
 
 
-
-### E eras isso por hoje!
+Happy Dojo!
