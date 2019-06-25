@@ -1,4 +1,340 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-06-19T19:59:15-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">troian.net.br</title><subtitle>A data packet on the web.</subtitle><author><name>Rodrigo Troian</name></author><entry><title type="html">TP-Link CPE 210 como Backhaul usando LiMe</title><link href="http://localhost:4000/cpe210backhaulLiMe/" rel="alternate" type="text/html" title="TP-Link CPE 210 como Backhaul usando LiMe" /><published>2019-04-01T00:00:00-03:00</published><updated>2019-04-01T00:00:00-03:00</updated><id>http://localhost:4000/cpe210backhaulLiMe</id><content type="html" xml:base="http://localhost:4000/cpe210backhaulLiMe/">&lt;p&gt;A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a &lt;strong&gt;unica porta de rede&lt;/strong&gt; ativa como &lt;strong&gt;Lan&lt;/strong&gt;, assim como possivelmente em outras versões de roteadores com uma unica porta LAN.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-06-25T15:36:42-03:00</updated><id>/feed.xml</id><title type="html">troian.net.br</title><subtitle>A data packet on the web.</subtitle><author><name>Rodrigo Troian</name></author><entry><title type="html">Dojo Sysadmin Redes Comunitarias</title><link href="/DojoRedes/" rel="alternate" type="text/html" title="Dojo Sysadmin Redes Comunitarias" /><published>2019-06-20T00:00:00-03:00</published><updated>2019-06-20T00:00:00-03:00</updated><id>/DojoRedes</id><content type="html" xml:base="/DojoRedes/">&lt;h1 id=&quot;dojo-redes-comunitárias&quot;&gt;Dojo Redes Comunitárias&lt;/h1&gt;
+
+&lt;h2 id=&quot;um-coding-dojo-diferente&quot;&gt;Um coding Dojo diferente&lt;/h2&gt;
+
+&lt;p&gt;Usar técnicas de coding dojo para aprender técnicas de administração de redes!!!&lt;/p&gt;
+
+&lt;h2 id=&quot;o-que-precisa&quot;&gt;O que precisa&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pt.wikipedia.org/wiki/Coding_Dojo&quot;&gt;https://pt.wikipedia.org/wiki/Coding_Dojo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Inspirado nas práticas dos dojos de artes marciais japonesas, um Coding Dojo inicia-se tipicamente com o seguinte arranjo:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ao menos &lt;strong&gt;um computador&lt;/strong&gt; conectado a um &lt;strong&gt;projetor&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;uma &lt;strong&gt;tela de projeção&lt;/strong&gt; que todos possam ver&lt;/li&gt;
+  &lt;li&gt;um &lt;strong&gt;piloto, um copiloto e um mestre&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;demais participantes em &lt;strong&gt;plateia&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;como-faz&quot;&gt;Como faz&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;O mestre oferece um &lt;strong&gt;desafio&lt;/strong&gt; ao grupo.&lt;/li&gt;
+  &lt;li&gt;O &lt;strong&gt;piloto, sentado ao computador&lt;/strong&gt;, é a única pessoa que pode utilizá-lo para concluir o desafio.&lt;/li&gt;
+  &lt;li&gt;O &lt;strong&gt;copiloto&lt;/strong&gt; permanece ao seu lado, mas somente para &lt;strong&gt;observar&lt;/strong&gt; o piloto em ação e oferecer &lt;strong&gt;indicações&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Todos os &lt;strong&gt;demais observam&lt;/strong&gt; e podem &lt;strong&gt;discutir&lt;/strong&gt; entre si e com o copiloto e o piloto.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;regras&quot;&gt;Regras&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Qualquer um pode ainda &lt;strong&gt;fazer perguntas&lt;/strong&gt; ao mestre, mas este só pode &lt;strong&gt;responder com outra pergunta&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Independente do desafio ser resolvido, a &lt;strong&gt;cada cinco minutos&lt;/strong&gt; o atual &lt;strong&gt;piloto volta à plateia&lt;/strong&gt;, o &lt;strong&gt;copiloto&lt;/strong&gt; torna-se o próximo &lt;strong&gt;piloto&lt;/strong&gt;, e alguém da &lt;strong&gt;plateia assume&lt;/strong&gt; como copiloto.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Por fim, a cada &lt;strong&gt;desafio cumprido&lt;/strong&gt;, o mestre oferece um &lt;strong&gt;outro, ligeiramente mais complexo&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desafio-0---começando&quot;&gt;Desafio 0 - começando&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;iniciante&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Ligar o roteador e identificar qual a rede criada&lt;/li&gt;
+      &lt;li&gt;Acessar o roteador pelo navegador&lt;/li&gt;
+      &lt;li&gt;Identificar como alterar o firmware&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Acessar o roteador identificar as dificuldades de se alterar um firmware&lt;/li&gt;
+  &lt;li&gt;Recursos: &lt;strong&gt;Computador, roteador e cabo ethernet&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desafio-1---alterando-firmware---openwrt&quot;&gt;Desafio 1 - Alterando Firmware - Openwrt&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;iniciante&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Substituir o firmware de fábrica&lt;/li&gt;
+      &lt;li&gt;identificar a nova rede criada&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: substituir o firmware de fábrica com o openwrt e observar o comportamento do roteador&lt;/li&gt;
+  &lt;li&gt;Recursos: &lt;strong&gt;Computador, roteador e cabo ethernet&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desafio-2---começando-com-openwrt&quot;&gt;Desafio 2 - começando com Openwrt&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;intermediário&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Acessar o roteador pelo navegador&lt;/li&gt;
+      &lt;li&gt;Identificar como ver informações do sistema e instalar novas coisas&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: Acessar o roteador identificar as dificuldades de se entender o sistema e seus updates&lt;/li&gt;
+  &lt;li&gt;Recursos: &lt;strong&gt;Computador, roteador e cabo ethernet&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desafio-3---alterando-firmware-libremesh&quot;&gt;Desafio 3 - Alterando Firmware LibreMesh&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;iniciante&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;Substituir o firmware ja atualizado&lt;/li&gt;
+      &lt;li&gt;identificar a nova rede criada&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: substituir o firmware de fábrica com o LiMe e observar o comportamento do roteador&lt;/li&gt;
+  &lt;li&gt;Recursos: &lt;strong&gt;Computador, roteador e cabo ethernet&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desafio-4---configurar-um-nó-na-rede-mesh&quot;&gt;Desafio 4 - Configurar um nó na rede mesh&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;intermediário&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;acessar o menu do roteador&lt;/li&gt;
+      &lt;li&gt;identificar e conferir se esse nó se conectou a rede mesh já existente&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: descobir uma maneira de acessar o roteador introduzindo ao thisnode.info&lt;/li&gt;
+  &lt;li&gt;Recursos: &lt;strong&gt;Computador, roteador e cabo, roteador mesh e malha ligados&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;desafio-5---avaliar-a-qualidade-do-novo-nó-instalado&quot;&gt;Desafio 5 - Avaliar a qualidade do novo nó instalado&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;intermediario&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;identificar a qualidade do sinal&lt;/li&gt;
+      &lt;li&gt;avaliar se esse nó precisa de alinhamento&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: entender como identificar o sinal/ruido, pela luci ou pelo lime-app&lt;/li&gt;
+  &lt;li&gt;Recursos: &lt;strong&gt;Computador, roteador e cabo ethernet&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desafio-6---acessar-outros-nodos-da-malha&quot;&gt;Desafio 6 - Acessar outros nodos da malha&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;intermediario&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;identificar qual roteador esta conectado&lt;/li&gt;
+      &lt;li&gt;entrar nas paginas de informação de outros 3 nodos&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: entender como funciona o sistema de status e redirecionamento / acesso aos outros roteadores&lt;/li&gt;
+  &lt;li&gt;Recursos: &lt;strong&gt;Computador, roteador, rasp  e cabo ethernet&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desafio-7---instalar-pacotes-qos-lime&quot;&gt;Desafio 7 - Instalar pacotes QOS LiMe&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;intermediario&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;ligar um router com sistema pronto&lt;/li&gt;
+      &lt;li&gt;identificar onde instalar pacotes e instalar QOS&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: ambientação a sistemas de pacotes com LiMe&lt;/li&gt;
+  &lt;li&gt;Recursos: &lt;strong&gt;Computador, rasp  e cabo ethernet&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;desafio-8---configurar-um-serviço-em-um-roteador-da-rede-mesh&quot;&gt;Desafio 8 - Configurar um serviço em um roteador da rede mesh&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nível: &lt;strong&gt;intermediario&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Desafio&lt;/strong&gt;:
+    &lt;ul&gt;
+      &lt;li&gt;conectar no roteador com o pacote QOS instalado&lt;/li&gt;
+      &lt;li&gt;explorar as possibilidades de controle de banda de saida&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Objetivo&lt;/strong&gt;: entender como funciona o sistema de QOS do openwrt/libremesh&lt;/li&gt;
+  &lt;li&gt;Recursos: **Computador, roteador, cabo ethernet e malha configurada **&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;e-eras-isso-por-hoje&quot;&gt;E eras isso por hoje!&lt;/h3&gt;</content><author><name>Rodrigo Troian</name></author><category term="dojo" /><category term="OpenWrt" /><category term="LibreMesh" /><category term="CN" /><summary type="html">Dojo Redes Comunitárias</summary></entry><entry><title type="html">Archer C5 OpenWRT e firmware de fabrica</title><link href="/archerc5FactoryFirmware/" rel="alternate" type="text/html" title="Archer C5 OpenWRT e firmware de fabrica" /><published>2019-05-10T00:00:00-03:00</published><updated>2019-05-10T00:00:00-03:00</updated><id>/archerc5FactoryFirmware</id><content type="html" xml:base="/archerc5FactoryFirmware/">&lt;p&gt;Partindo de um roteador com LibreMesh com problemas no ambiente gráfico, começamos com a questão de devolver a firmware original diretamente ou tentar fazer o caminho de instalação via openwrt?&lt;/p&gt;
+
+&lt;p&gt;Nesse caso, como o ambiente gráfico não está funcionando vamos mudar o sistema LibreMesh para um Openwrt “puro” e depois para o original, alterando a firmware (corte do setor de boot)&lt;/p&gt;
+
+&lt;p&gt;O link para a  firmware pode ser acessado direto &lt;a href=&quot;https://static.tp-link.com/res/down/soft/Archer_C5_V1.20_150428.zip&quot;&gt;daqui&lt;/a&gt;, e para a pagina dela que mostra que a ultima versao é de 2015 &lt;a href=&quot;https://www.tp-link.com/en/support/download/archer-c5/v1.20/#Firmware&quot;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;strong&gt;Atenção:&lt;/strong&gt; Siga esses passos por usa conta e risco!&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Começamos acessando o router por shell:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; # ssh root@10.13.0.1 -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Depois partindo da pasta onde foi salvo o openwrt para o modelo que baixamos:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; # scp openwrt-18.06.2-ar71xx-generic-archer-c5-v1-squashfs-sysupgrade.bin root@10.13.0.1:/tmp
+openwrt-18.06.2-ar71xx-generic-archer-c
+100% 3968KB 734.9KB/s   00:05
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Agora voltando ao router:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; # cd /tmp/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Executamos o procedimento de sysupgrade:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@LiMe-56b747:/tmp# sysupgrade openwrt-18.06.2-ar71xx-generic-archer-c5
+-v1-squashfs-sysupgrade.bin
+Image metadata not found
+Use sysupgrade -F to override this check when downgrading or flashing to vendor firmware
+Image check 'fwtool_check_image' failed.
+root@LiMe-56b747:/tmp#
+root@LiMe-56b747:/tmp# sysupgrade -F openwrt-18.06.2-ar71xx-generic-archer
+-c5-v1-squashfs-sysupgrade.bin
+Image metadata not found
+Image check 'fwtool_check_image' failed but --force given - will update anyway!
+Saving config files...
+Commencing upgrade. Closing all shell sessions.
+debug1: channel 0: free: client-session, nchannels 1
+Connection to 10.13.183.71 closed by remote host.
+Connection to 10.13.183.71 closed.
+Transferred: sent 5488, received 8560 bytes, in 339.8 seconds
+Bytes per second: sent 16.1, received 25.2
+debug1: Exit status -1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;se tudo deu certo, agora devemos ter um servidor dhcp iniciando no roteador, mas no meu caso não foi…. vamos ao safe outra vez… e na segunda vez repetindo a gravação, lembrei de ter esquecido de mandar apagar as configs antigas no comando sysupgrade, usando a opção &lt;strong&gt;-n&lt;/strong&gt;
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; # sysupgrade -n -F openwrt-18.06.2-ar71xx-generic-archer-c5
+-v1-squashfs-sysupgrade.bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;E se tudo deu certo, estamos prontos para iniciar o roteador e acessar ele por cabo conectado e pelo ip 192.168.1.1
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ping 192.168.1.1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Agora com o firmware de antes &lt;a href=&quot;http://www.tplink.com/en/support/download/?model=Archer+C7&quot;&gt;OEM&lt;/a&gt; vamos cortar os primeiros 0x20200 (that is 131,584 = 257&lt;em&gt;512) Bytes do firmware original (1&lt;/em&gt;512 Vendor-info + 256*512 U-Boot):
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dd if=ArcherC5v1_en_3_14_3_up_boot\(150428\).bin of=tplink.bin skip=257 bs=512
+31744+0 registros de entrada
+31744+0 registros de saída
+16252928 bytes (16 MB, 16 MiB) copiados, 0,116377 s, 140 MB/s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Agora podemos fazer a gravação direto pela interface da Luci em system - firmware ou usando o shell:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scp tplink.bin root@192.168.1.1:/tmp/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Conectar no router:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh root@192.168.1.1 -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Agora ir a pasta tmp e rodar o procedimento mais seguro que é o sysupgrade
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sysupgrade /tmp/tplink.bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Ou menos aconselhado, mas eficiente mtd:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mtd -r write /tmp/tplink.bin firmware
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;E se tudo deu certo, voltamos a ter um roteador com a firmware de fábrica!&lt;/p&gt;
+
+&lt;p&gt;Happy Downgrading!!&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="FailSafe" /><category term="OpenWrt" /><category term="TP-link" /><category term="Archer" /><summary type="html">Partindo de um roteador com LibreMesh com problemas no ambiente gráfico, começamos com a questão de devolver a firmware original diretamente ou tentar fazer o caminho de instalação via openwrt?</summary></entry><entry><title type="html">Archer C5 FailSafe</title><link href="/archerc5FailSafeTFTP/" rel="alternate" type="text/html" title="Archer C5 FailSafe" /><published>2019-05-01T00:00:00-03:00</published><updated>2019-05-01T00:00:00-03:00</updated><id>/archerc5FailSafeTFTP</id><content type="html" xml:base="/archerc5FailSafeTFTP/">&lt;p&gt;No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.
+Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Dual Band (concurrent) and Gigabit Ethernet. Advertised as 1750 Mbps. It has simultaneous Triple-Stream (3×3) radios on both 2.4GHz and 5 GHz Bands. It supports 802.11n in 2.4GHz for 450Mbps throughput and IEEE 802.11ac (draft) for 1300Mbps throughput in 5GHz.
+The Archer C5 v1.x: available worldwide, has 3 internal (2.4GHz) and 3 external (5GHz) antennas.
+The Archer C5 v2.0: available worldwide, has ?? internal (2.4GHz) and 2 external (5GHz) antennas.
+&lt;cite&gt;&lt;a href=&quot;https://openwrt.org/toh/tp-link/archer-c5-c7-wdr7500&quot;&gt;OpenWRT Site&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Para entrar em Failsafe Mode no Archer C5 ou no Archer C7, é necessário pressionar o botão WPS/Reset rapidamente após iniciar o roteador, mas ao contrário do normal que se mantem pressionado, nesse caso apertar frenéticamente alternadamente é o que funciona!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Parar&lt;/strong&gt; quando o segundo LED (um asterisco) começar a &lt;strong&gt;piscar&lt;/strong&gt; rapidamente.&lt;/p&gt;
+
+&lt;p&gt;Depois em tese é só seguir o processo normal como visto &lt;a href=&quot;https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset&quot;&gt;aqui&lt;/a&gt;,&lt;/p&gt;
+
+&lt;p&gt;Mas é aqui que as coisas ficam mais chatas, precisamos conectar via cabo na porta lan, limpar todas as rotas e endereços, conferir se a placa esta ativa, adicionar o endereço e ai sim começar o upgrade, então vamos ao passo a passo:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;desativar gerenciador de rede:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# systemctl stop NetworkManager
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;desconectar todos cabos e wifis e limpar todas rotas de conexões:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &amp;gt; # ip r
+  &amp;gt; # ip r del default .... (copiar da saida acima)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;conferir se nao temos um ip na mesma linha do que precismos:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; # ip a
+&amp;gt; # ip a del ... dev SEUDEV
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;conferir se o link nao entrou em estado desligado:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; # ip l
+&amp;gt; # ip l set dev SEUDEV up
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;adicionar o endereço certo para comunicar, meu caso usando o 192.168.1.100:
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; # ip a add 192.168.1.100/24 dev SEUDEV
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;e se tudo deu certo, o comando ping para 192.168.1.1 deve estar funcionando, em caso cotnrário, conferir todos os passos :)
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; ping 192.168.1.1
+PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
+64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.731 ms
+64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.762 ms
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Agora podemos ir ao recovery propriamente dito:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh root@192.168.1.1 -v
+OpenSSH_8.0p1, OpenSSL 1.1.1c  28 May 2019
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug1: Connecting to 192.168.1.1 [192.168.1.1] port 22.
+debug1: Connection established.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Responder sim ao fingerprint e seguir a conexão:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----------------------------------------------------
+ OpenWrt SNAPSHOT, r9662-3411399
+ -----------------------------------------------------
+================= FAILSAFE MODE active ================
+special commands:
+* firstboot	     reset settings to factory defaults
+* mount_root	 mount root-partition with config files
+
+after mount_root:
+* passwd			 change root's password
+* /etc/config		    directory with config files
+
+for more help see:
+https://openwrt.org/docs/guide-user/troubleshooting/
+- failsafe_and_factory_reset
+- root_password_reset
+=======================================================
+root@(none):~#
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Se deu certo até agora, entramos em uma tela assim (no caso de ja ter existido uma instalação anterior, claro…)&lt;/p&gt;
+
+&lt;p&gt;Agora vamos reverter para a configuração de fabrica:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;root@(none):~# firstboot
+This will erase all settings and remove any installed packages. Are you sure? [N/y]
+y
+/dev/mtdblock4 is not mounted
+/dev/mtdblock4 will be erased on next mount
+root@(none):~# reboot &amp;amp; exit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;E voltamos a ter uma imagem funcional, no meu caso uma LiMe mas poderia ser qualquer outro sabor de openwrt \0/&lt;/p&gt;
+
+&lt;p&gt;E agora temos uma versão funcionando do openwrt… vamos a parte de voltar a firmware orginal em outro texto!&lt;/p&gt;
+
+&lt;p&gt;Happy FailSafing!&lt;/p&gt;
+
+&lt;p&gt;pagina do archer c5 e c7 no &lt;a href=&quot;https://openwrt.org/toh/tp-link/archer-c5-c7-wdr7500&quot;&gt;site do OpenWrt&lt;/a&gt;&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="FailSafe" /><category term="OpenWrt" /><category term="TP-link" /><category term="Archer" /><summary type="html">No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes. Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:</summary></entry><entry><title type="html">TP-Link CPE 210 como Backhaul usando LiMe</title><link href="/cpe210backhaulLiMe/" rel="alternate" type="text/html" title="TP-Link CPE 210 como Backhaul usando LiMe" /><published>2019-04-01T00:00:00-03:00</published><updated>2019-04-01T00:00:00-03:00</updated><id>/cpe210backhaulLiMe</id><content type="html" xml:base="/cpe210backhaulLiMe/">&lt;p&gt;A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a &lt;strong&gt;unica porta de rede&lt;/strong&gt; ativa como &lt;strong&gt;Lan&lt;/strong&gt;, assim como possivelmente em outras versões de roteadores com uma unica porta LAN.
 Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos  resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -239,7 +575,7 @@ config interface 'wan6'
 
 &lt;p&gt;happy backhauling!&lt;/p&gt;
 
-&lt;p&gt;ps: &lt;em&gt;nos meus testes, com as placas certas mas o firewall não, ele funcionava partindo da cpe mas nao dos outros nodos, ao ajustar o firewall e reiniciar a malha, tudo voltou a vida!&lt;/em&gt;&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a unica porta de rede ativa como Lan, assim como possivelmente em outras versões de roteadores com uma unica porta LAN. Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.</summary></entry><entry><title type="html">TP-Link CPE 210 FailSafe e TFTP</title><link href="http://localhost:4000/cpe210FailSafeTFTP/" rel="alternate" type="text/html" title="TP-Link CPE 210 FailSafe e TFTP" /><published>2019-03-01T00:00:00-03:00</published><updated>2019-03-01T00:00:00-03:00</updated><id>http://localhost:4000/cpe210FailSafeTFTP</id><content type="html" xml:base="http://localhost:4000/cpe210FailSafeTFTP/">&lt;p&gt;Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos seguir os seguintes  passos:&lt;/p&gt;
+&lt;p&gt;ps: &lt;em&gt;nos meus testes, com as placas certas mas o firewall não, ele funcionava partindo da cpe mas nao dos outros nodos, ao ajustar o firewall e reiniciar a malha, tudo voltou a vida!&lt;/em&gt;&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">A instalação padrão do LibreMesh que compilamos para a CPE 210 v3 vem com a unica porta de rede ativa como Lan, assim como possivelmente em outras versões de roteadores com uma unica porta LAN. Para poder compartilhar internet precisamos ter uma porta WAN ativa, e o bom é que conseguimos resolver isso mudando algumas configurações no roteador que servirá de borda para a instalação.</summary></entry><entry><title type="html">TP-Link CPE 210 FailSafe e TFTP</title><link href="/cpe210FailSafeTFTP/" rel="alternate" type="text/html" title="TP-Link CPE 210 FailSafe e TFTP" /><published>2019-03-01T00:00:00-03:00</published><updated>2019-03-01T00:00:00-03:00</updated><id>/cpe210FailSafeTFTP</id><content type="html" xml:base="/cpe210FailSafeTFTP/">&lt;p&gt;Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos seguir os seguintes  passos:&lt;/p&gt;
 
 &lt;p&gt;1- Para entrar em failsafe, desligar o roteador pelo cabo de rede, contar 5 segundos, colocar um pino em reset, ligar contando até 10,  o led da lan deve ligar sem ter nada conectado nela…&lt;/p&gt;
 
@@ -357,7 +693,7 @@ $ dhclient enp5s0 -v
 &lt;p&gt;happy debricking!
 rT&lt;/p&gt;
 
-&lt;p&gt;v0 em 24/01&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos seguir os seguintes passos:</summary></entry><entry><title type="html">Compilar TP-Link CPE 210 v2&amp;amp;3</title><link href="http://localhost:4000/cpe210v3compileLiMe/" rel="alternate" type="text/html" title="Compilar TP-Link CPE 210 v2&amp;3" /><published>2019-02-01T00:00:00-02:00</published><updated>2019-02-01T00:00:00-02:00</updated><id>http://localhost:4000/cpe210v3compileLiMe</id><content type="html" xml:base="http://localhost:4000/cpe210v3compileLiMe/">&lt;p&gt;Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos  escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.&lt;/p&gt;
+&lt;p&gt;v0 em 24/01&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">Em caso de problema com alguma gravação no cpe, precisaremos usar o modo de failsafe para executar nova gravação e restaurar o sistema e para isso precisamos seguir os seguintes passos:</summary></entry><entry><title type="html">Compilar TP-Link CPE 210 v2&amp;amp;3</title><link href="/cpe210v3compileLiMe/" rel="alternate" type="text/html" title="Compilar TP-Link CPE 210 v2&amp;3" /><published>2019-02-01T00:00:00-02:00</published><updated>2019-02-01T00:00:00-02:00</updated><id>/cpe210v3compileLiMe</id><content type="html" xml:base="/cpe210v3compileLiMe/">&lt;p&gt;Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos  escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.&lt;/p&gt;
 
 &lt;p&gt;Este passo a passo esta baseado no que o  @HiureAnderson fez, mas escrito em markdown e com adição de imagens e alguns pacotes, orginal em :&lt;/p&gt;
 
@@ -496,7 +832,7 @@ drwxr-xr-x 3 rtroian rtroian 4,0K jan 13 09:18 ..
 
 &lt;p&gt;Eras isso pessoal,
 Happy Meshing
-rT&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.</summary></entry><entry><title type="html">Rebooting…</title><link href="http://localhost:4000/rebooting/" rel="alternate" type="text/html" title="Rebooting..." /><published>2019-01-01T00:00:00-02:00</published><updated>2019-01-01T00:00:00-02:00</updated><id>http://localhost:4000/rebooting</id><content type="html" xml:base="http://localhost:4000/rebooting/">&lt;h1 id=&quot;rebooting&quot;&gt;Rebooting&lt;/h1&gt;
+rT&lt;/p&gt;</content><author><name>Rodrigo Troian</name></author><category term="generic" /><category term="mesh" /><category term="openwrt" /><category term="LiMe" /><summary type="html">Para usar o LiMe em CPE 210 v3 ainda nao temos opção no chef (março 2019), entao precisamos compilar ele partindo do openwrt, para facilitar acabamos escolhendo uma versao com o port do ChipSet mt7620 pronto para evitar ter que aplicar patches na compilação.</summary></entry><entry><title type="html">Rebooting…</title><link href="/rebooting/" rel="alternate" type="text/html" title="Rebooting..." /><published>2019-01-01T00:00:00-02:00</published><updated>2019-01-01T00:00:00-02:00</updated><id>/rebooting</id><content type="html" xml:base="/rebooting/">&lt;h1 id=&quot;rebooting&quot;&gt;Rebooting&lt;/h1&gt;
 
 &lt;p&gt;Depois de um longo tempo usando Wordpress para manter meus sites, decidi migrar para algo mais simples e ao mesmo tempo mais direto, e como não preciso de conteúdo dinamico por aqui, decidi usar o stack GitPages + Jekyll.&lt;/p&gt;
 
