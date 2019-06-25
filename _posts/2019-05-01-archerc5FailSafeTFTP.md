@@ -11,7 +11,7 @@ header:
 # excerpt: "FLOSS, OpenWRT, Mesh, InfoSec"
 ---
 
-No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.
+No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são os seguintes.
 Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:
 
 
@@ -21,13 +21,13 @@ Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site 
 > <cite><a href="https://openwrt.org/toh/tp-link/archer-c5-c7-wdr7500">OpenWRT Site</a></cite>
 
 
-Para entrar em Failsafe Mode no Archer C5 ou no Archer C7, é necessário pressionar o botão WPS/Reset rapidamente após iniciar o roteador, mas ao contrário do normal que se mantem pressionado, nesse caso apertar frenéticamente alternadamente é o que funciona!
+Para entrar em Failsafe Mode no Archer C5 ou no Archer C7, é necessário pressionar o botão WPS/Reset rapidamente após iniciar o roteador, mas ao contrário do normal que se mantem o botão pressionado, nesse caso apertar alternadamente é o que funciona!
 
-**Parar** quando o segundo LED (um asterisco) começar a **piscar** rapidamente.
+Apenas **Parar** quando o segundo LED (um asterisco) começar a **piscar** rapidamente.
 
-Depois em tese é só seguir o processo normal como visto [aqui](https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset),
+Depois em tese é só seguir o processo normal como visto [aqui](https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset).
 
-Mas é aqui que as coisas ficam mais chatas, precisamos conectar via cabo na porta lan, limpar todas as rotas e endereços, conferir se a placa esta ativa, adicionar o endereço e ai sim começar o upgrade, então vamos ao passo a passo:
+Mas é aqui que as coisas ficam mais chatas, as vezes o roteador nao esta com nada ativado e o link não se mantém, ai precisamos conectar via cabo na porta lan, limpar todas as rotas e endereços, conferir se a placa esta ativa, adicionar o endereço e ai sim começar o upgrade, então vamos ao passo a passo:
 
 1. desativar gerenciador de rede:
 ```
@@ -59,9 +59,7 @@ PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
 64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.731 ms
 64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.762 ms
 ```
-
-
-Agora podemos ir ao recovery propriamente dito:
+1. Agora podemos ir ao recovery propriamente dito:
 ```
 ssh root@192.168.1.1 -v
 OpenSSH_8.0p1, OpenSSL 1.1.1c  28 May 2019
@@ -69,7 +67,7 @@ debug1: Reading configuration data /etc/ssh/ssh_config
 debug1: Connecting to 192.168.1.1 [192.168.1.1] port 22.
 debug1: Connection established.
 ```
-Responder sim ao fingerprint e seguir a conexão:
+1. Responder sim ao fingerprint e seguir a conexão:
 ```
 -----------------------------------------------------
  OpenWrt SNAPSHOT, r9662-3411399
@@ -106,7 +104,7 @@ root@(none):~# reboot & exit
 
 E voltamos a ter uma imagem funcional, no meu caso uma LiMe mas poderia ser qualquer outro sabor de openwrt \0/
 
-E agora temos uma versão funcionando do openwrt... vamos a parte de voltar a firmware orginal em outro texto!
+E agora temos uma versão funcionando do openwrt... vamos a parte de voltar a firmware original em outro texto!
 
 Happy FailSafing!
 

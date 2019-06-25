@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Archer C5 FailSafe - troian.net.br</title>
-<meta name="description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
+<meta name="description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são os seguintes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
 
 
 
@@ -21,7 +21,7 @@
 <meta property="og:url" content="/archerc5FailSafeTFTP/">
 
 
-  <meta property="og:description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
+  <meta property="og:description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são os seguintes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
 
 
 
@@ -280,7 +280,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Archer C5 FailSafe">
-    <meta itemprop="description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
+    <meta itemprop="description" content="No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são os seguintes.Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:">
     <meta itemprop="datePublished" content="May 01, 2019">
     
 
@@ -303,7 +303,7 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes.
+        <p>No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são os seguintes.
 Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas:</p>
 
 <blockquote>
@@ -313,13 +313,13 @@ The Archer C5 v2.0: available worldwide, has ?? internal (2.4GHz) and 2 external
 <cite><a href="https://openwrt.org/toh/tp-link/archer-c5-c7-wdr7500">OpenWRT Site</a></cite></p>
 </blockquote>
 
-<p>Para entrar em Failsafe Mode no Archer C5 ou no Archer C7, é necessário pressionar o botão WPS/Reset rapidamente após iniciar o roteador, mas ao contrário do normal que se mantem pressionado, nesse caso apertar frenéticamente alternadamente é o que funciona!</p>
+<p>Para entrar em Failsafe Mode no Archer C5 ou no Archer C7, é necessário pressionar o botão WPS/Reset rapidamente após iniciar o roteador, mas ao contrário do normal que se mantem o botão pressionado, nesse caso apertar alternadamente é o que funciona!</p>
 
-<p><strong>Parar</strong> quando o segundo LED (um asterisco) começar a <strong>piscar</strong> rapidamente.</p>
+<p>Apenas <strong>Parar</strong> quando o segundo LED (um asterisco) começar a <strong>piscar</strong> rapidamente.</p>
 
-<p>Depois em tese é só seguir o processo normal como visto <a href="https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset">aqui</a>,</p>
+<p>Depois em tese é só seguir o processo normal como visto <a href="https://openwrt.org/docs/guide-user/troubleshooting/failsafe_and_factory_reset">aqui</a>.</p>
 
-<p>Mas é aqui que as coisas ficam mais chatas, precisamos conectar via cabo na porta lan, limpar todas as rotas e endereços, conferir se a placa esta ativa, adicionar o endereço e ai sim começar o upgrade, então vamos ao passo a passo:</p>
+<p>Mas é aqui que as coisas ficam mais chatas, as vezes o roteador nao esta com nada ativado e o link não se mantém, ai precisamos conectar via cabo na porta lan, limpar todas as rotas e endereços, conferir se a placa esta ativa, adicionar o endereço e ai sim começar o upgrade, então vamos ao passo a passo:</p>
 
 <ol>
   <li>desativar gerenciador de rede:
@@ -352,51 +352,60 @@ PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
 64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.762 ms
 </code></pre></div>    </div>
   </li>
-</ol>
-
-<p>Agora podemos ir ao recovery propriamente dito:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@192.168.1.1 -v
+  <li>Agora podemos ir ao recovery propriamente dito:
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh root@192.168.1.1 -v
 OpenSSH_8.0p1, OpenSSL 1.1.1c  28 May 2019
 debug1: Reading configuration data /etc/ssh/ssh_config
 debug1: Connecting to 192.168.1.1 [192.168.1.1] port 22.
 debug1: Connection established.
-</code></pre></div></div>
-<p>Responder sim ao fingerprint e seguir a conexão:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>-----------------------------------------------------
+</code></pre></div>    </div>
+  </li>
+  <li>Responder sim ao fingerprint e seguir a conexão:
+```
+—————————————————–
  OpenWrt SNAPSHOT, r9662-3411399
- -----------------------------------------------------
+ —————————————————–
 ================= FAILSAFE MODE active ================
 special commands:
-* firstboot	     reset settings to factory defaults
-* mount_root	 mount root-partition with config files
+    <ul>
+      <li>firstboot	     reset settings to factory defaults</li>
+      <li>mount_root	 mount root-partition with config files</li>
+    </ul>
+  </li>
+</ol>
 
-after mount_root:
-* passwd			 change root's password
-* /etc/config		    directory with config files
+<p>after mount_root:</p>
+<ul>
+  <li>passwd			 change root’s password</li>
+  <li>/etc/config		    directory with config files</li>
+</ul>
 
-for more help see:
-https://openwrt.org/docs/guide-user/troubleshooting/
-- failsafe_and_factory_reset
-- root_password_reset
-=======================================================
-root@(none):~#
+<p>for more help see:
+https://openwrt.org/docs/guide-user/troubleshooting/</p>
+<ul>
+  <li>failsafe_and_factory_reset</li>
+  <li>
+    <h1 id="root_password_reset">root_password_reset</h1>
+    <p>root@(none):~#</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Se deu certo até agora, entramos em uma tela assim (no caso de ja ter existido uma instalação anterior, claro...)
+
+Agora vamos reverter para a configuração de fabrica:
 
 </code></pre></div></div>
-<p>Se deu certo até agora, entramos em uma tela assim (no caso de ja ter existido uma instalação anterior, claro…)</p>
-
-<p>Agora vamos reverter para a configuração de fabrica:</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>root@(none):~# firstboot
+<p>root@(none):~# firstboot
 This will erase all settings and remove any installed packages. Are you sure? [N/y]
 y
 /dev/mtdblock4 is not mounted
 /dev/mtdblock4 will be erased on next mount
 root@(none):~# reboot &amp; exit
-</code></pre></div></div>
+```</p>
 
 <p>E voltamos a ter uma imagem funcional, no meu caso uma LiMe mas poderia ser qualquer outro sabor de openwrt \0/</p>
 
-<p>E agora temos uma versão funcionando do openwrt… vamos a parte de voltar a firmware orginal em outro texto!</p>
+<p>E agora temos uma versão funcionando do openwrt… vamos a parte de voltar a firmware original em outro texto!</p>
 
 <p>Happy FailSafing!</p>
 

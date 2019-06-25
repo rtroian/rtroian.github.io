@@ -20,7 +20,7 @@ var store = [{
         "url": "/cpe210backhaulLiMe/",
         "teaser":" https://cdn-images-1.medium.com/max/1600/1*SZ_WjD0s3Jg7woViSVon2g.gif "},{
         "title": "Archer C5 FailSafe",
-        "excerpt":"No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são so seguitnes. Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas: Dual Band (concurrent)...","categories": [],
+        "excerpt":"No caso de termos um Archer C5 sem responder a nenhuma das portas cabeadas e sem fio, os procedimentos para tentar seu resgate são os seguintes. Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site do OpenWRT tem as seguintes caracteristicas: Dual Band (concurrent)...","categories": [],
         "tags": ["FailSafe","OpenWrt","TP-link","Archer"],
         "url": "/archerc5FailSafeTFTP/",
         "teaser":" https://cdn-images-1.medium.com/max/1600/1*SZ_WjD0s3Jg7woViSVon2g.gif "},{
