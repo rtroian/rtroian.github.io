@@ -1,5 +1,5 @@
 ---
-title: "Archer C5 FailSafe e TFTP"
+title: "Archer C5 FailSafe"
 date: 2019-05-01
 tags:
   - FailSafe
@@ -20,14 +20,8 @@ Neste caso em especifico estamos usando o modelo v1.2, que de acordo com o site 
 >The Archer C5 v2.0: available worldwide, has ?? internal (2.4GHz) and 2 external (5GHz) antennas.
 > <cite><a href="https://openwrt.org/toh/tp-link/archer-c5-c7-wdr7500">OpenWRT Site</a></cite>
 
-Vamos passar o processo de retorno ao firmware original, o que eu considero um Downgrade, mas tudo bem...
 
-O link para a  firmware pode ser acessado direto [daqui](https://static.tp-link.com/res/down/soft/Archer_C5_V1.20_150428.zip), e para a pagina dela que mostra que a ultima versao é de 2015 [aqui](https://www.tp-link.com/en/support/download/archer-c5/v1.20/#Firmware).
-
-**Atenção:** Siga esses passos por usa conta e risco!
-{: .notice--warning}
-
-Para entrar em Failsafe Mode no Archer C5 ou no Archer C7 pressionar o botão WPS/Reset rapidamente após iniciar o roteador, mas ao contrário do normal que se mantem pressionado, nesse caso apertar freneticamente alternadamente é o que funciona!
+Para entrar em Failsafe Mode no Archer C5 ou no Archer C7, é necessário pressionar o botão WPS/Reset rapidamente após iniciar o roteador, mas ao contrário do normal que se mantem pressionado, nesse caso apertar frenéticamente alternadamente é o que funciona!
 
 **Parar** quando o segundo LED (um asterisco) começar a **piscar** rapidamente.
 
